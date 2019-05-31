@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
+import { fromEvent, Subject, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
-
 
 const rippleServer = 'wss://s2.ripple.com:443';
 
@@ -47,9 +46,7 @@ export class XrpDonationsService {
           data: JSON.parse(message.data)
         });
       });
-
     return this.socketData$;
-
   }
 
   getAccount(account: string) {
@@ -65,23 +62,22 @@ export class XrpDonationsService {
     this.messages$.unsubscribe();
   }
 
-  //
-  // watchAccount(account: string) {
-  //   this.socket.next({
-  //     command: 'subscribe',
-  //     accounts: [account],
-  //     streams: [
-  //       'ledger'
-  //     ]
-  //   });
-  // }
+  watchAccount(account: string) {
+    this.socket.send(JSON.stringify({
+      command: 'subscribe',
+      accounts: [account],
+      streams: [
+        'ledger'
+      ]
+    }));
+  }
 
-  // ping() {
-  //   const command = {
-  //     command: 'ping'
-  //   };
-  //   this.socket.next(command);
-  // }
+  ping() {
+    const command = {
+      command: 'ping'
+    };
+    this.socket.send(JSON.stringify(command));
+  }
 }
 
 export enum ConnectionStatus {

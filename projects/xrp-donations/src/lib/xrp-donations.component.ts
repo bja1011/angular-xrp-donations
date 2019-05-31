@@ -30,6 +30,7 @@ export class XrpDonationsComponent implements OnDestroy {
       case 'open':
         this.status = ConnectionStatus.connected;
         this.xrpDonationsService.getAccount(this.account);
+        this.xrpDonationsService.watchAccount(this.account);
         break;
 
       case 'close':
@@ -43,9 +44,10 @@ export class XrpDonationsComponent implements OnDestroy {
   }
 
   private handleMessageType(data: any) {
-    const accountData = data.result.account_data;
-    if (accountData) {
-      this.balance = accountData.Balance / 1000000;
+    console.log(data)
+    const result = data.result;
+    if (result && result.account_data) {
+      this.balance = result.account_data.Balance / 1000000;
     }
   }
 
