@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ConnectionStatus, XrpDonationsService } from './xrp-donations.service';
-import { take } from 'rxjs/operators';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { ConnectionStatus, SocketData, XrpDonationsService } from './xrp-donations.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'xrp-donations',
@@ -9,39 +9,49 @@ import { take } from 'rxjs/operators';
   `,
   styles: []
 })
-export class XrpDonationsComponent implements OnInit {
+export class XrpDonationsComponent implements OnDestroy {
 
   @Input() account: string;
   balance: number;
   status: ConnectionStatus = ConnectionStatus.disconnected;
+  connection: Subscription;
 
   constructor(private xrpDonationsService: XrpDonationsService,
   ) {
-    xrpDonationsService.connect()
-      .subscribe(msg => {
-        console.log(msg);
-        this.handleSocketResponse(msg);
-      });
 
-    xrpDonationsService.openObserver
-      .pipe(
-        take(1)
-      )
-      .subscribe((event) => {
+    this.connection = xrpDonationsService.connect()
+      .subscribe(event => {
+        this.handleSocketData(event);
+      });
+  }
+
+  private handleSocketData(socketData: SocketData) {
+    switch (socketData.type) {
+      case 'open':
         this.status = ConnectionStatus.connected;
-        // xrpDonationsService.watchAccount(this.account);
-        xrpDonationsService.getAccount(this.account);
-      });
+        this.xrpDonationsService.getAccount(this.account);
+        break;
+
+      case 'close':
+        this.status = ConnectionStatus.disconnected;
+        break;
+
+      case 'message':
+        this.handleMessageType(socketData.data);
+        break;
+    }
   }
 
-  ngOnInit() {
-  }
-
-  private handleSocketResponse(msg: any) {
-    const accountData = msg.result.account_data;
+  private handleMessageType(data: any) {
+    const accountData = data.result.account_data;
     if (accountData) {
       this.balance = accountData.Balance / 1000000;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.connection.unsubscribe();
+    this.xrpDonationsService.disconnect();
   }
 }
 
