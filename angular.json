@@ -116,6 +116,46 @@
           }
         }
       }
+    },
+    "xrp-donations": {
+      "root": "projects/xrp-donations",
+      "sourceRoot": "projects/xrp-donations/src",
+      "projectType": "library",
+      "prefix": "xrp-donations",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/xrp-donations/tsconfig.lib.json",
+            "project": "projects/xrp-donations/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/xrp-donations/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/xrp-donations/src/test.ts",
+            "tsConfig": "projects/xrp-donations/tsconfig.spec.json",
+            "karmaConfig": "projects/xrp-donations/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/xrp-donations/tsconfig.lib.json",
+              "projects/xrp-donations/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "xrp-donations-demo"
