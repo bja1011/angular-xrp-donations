@@ -3,7 +3,7 @@ import { ConnectionStatus, SocketData, XrpDonationsService } from './xrp-donatio
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'xrp-donations',
+  selector: 'bja-xrp-donations',
   template: `
     {{balance ? balance + 'XRP' : '-'}} <br>{{status}}
   `,
