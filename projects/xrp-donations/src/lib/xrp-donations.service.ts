@@ -67,7 +67,7 @@ export class XrpDonationsService {
       command: 'subscribe',
       accounts: [account],
       streams: [
-        'ledger'
+        'ledger',
       ]
     }));
   }
