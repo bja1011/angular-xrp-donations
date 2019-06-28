@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { XrpDonationsConfig } from '../../projects/xrp-donations/src/lib/xrp-donations.interfaces';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  noBalanceConfig: XrpDonationsConfig = {
+    showBalance: false
+  };
+
+  noQRConfig: XrpDonationsConfig = {
+    showQRCode: false
+  };
 }

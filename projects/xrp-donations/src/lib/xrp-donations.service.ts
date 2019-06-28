@@ -4,9 +4,7 @@ import { take } from 'rxjs/operators';
 
 const rippleServer = 'wss://s2.ripple.com:443';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class XrpDonationsService {
 
   private socket: WebSocket;
@@ -82,7 +80,8 @@ export class XrpDonationsService {
 
 export enum ConnectionStatus {
   connected = 'Connected',
-  disconnected = 'Disconnected'
+  disconnected = 'Disconnected',
+  connecting = 'Connecting'
 }
 
 export interface SocketData {
