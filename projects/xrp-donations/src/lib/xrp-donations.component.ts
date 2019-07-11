@@ -1,7 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ConnectionStatus, SocketData, XrpDonationsService } from './xrp-donations.service';
 import { Subscription } from 'rxjs';
-import * as QR from './qrc.js';
 import { XrpDonationsConfig } from './xrp-donations.interfaces';
 
 const defaultConfig: XrpDonationsConfig = {
@@ -18,7 +17,7 @@ const defaultConfig: XrpDonationsConfig = {
   styleUrls: ['./xrp-donations.component.scss'],
   providers: [XrpDonationsService]
 })
-export class XrpDonationsComponent implements OnDestroy, OnInit {
+export class XrpDonationsComponent implements OnDestroy {
 
   userConfig: XrpDonationsConfig = defaultConfig;
   @Input() account: string;
@@ -34,7 +33,6 @@ export class XrpDonationsComponent implements OnDestroy, OnInit {
   balance: number;
   status: ConnectionStatus = ConnectionStatus.connecting;
   connection: Subscription;
-  qrCodeImage: string;
 
   constructor(private xrpDonationsService: XrpDonationsService,
   ) {
@@ -72,10 +70,6 @@ export class XrpDonationsComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.connection.unsubscribe();
     this.xrpDonationsService.disconnect();
-  }
-
-  ngOnInit(): void {
-    this.qrCodeImage = QR.createQRCode(this.account);
   }
 }
 

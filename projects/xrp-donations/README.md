@@ -37,3 +37,5 @@ myConfig: XrpDonationsConfig = {
 
 All boolean properties are optional and true as default. 
 
+### Third-party info
+Using http://goqr.me/api/ to generate QR codes.
