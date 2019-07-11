@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+.my-custom-class {
+  font-size: 20px;
+  color: dimgrey;
+
+  .bja-xrp-qr {
+    float: left;
+    margin-right: 50px;
+  }
+
+  .bja-xrp-status {
+    font-size: 10px;
+    color: darkgrey;
+  }
+
+  .bja-xrp-balance {
+    font-weight: bold;
+    font-size: 30px;
+    color: orangered;
+  }
+}

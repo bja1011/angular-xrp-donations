@@ -1,7 +1,8 @@
 <div [className]="userConfig.containerClass">
-  <img *ngIf="userConfig.showQRCode" [src]='qrCodeImage'><br>{{account}}<br>
+  <img class="bja-xrp-item bja-xrp-qr" *ngIf="userConfig.showQRCode" [src]='qrCodeImage'>
+  <div class="bja-xrp-item bja-xrp-account" *ngIf="userConfig.showAccount">{{account}}</div>
   <ng-container *ngIf="userConfig && userConfig.showBalance">
-    <div class="balance">{{balance ? balance + 'XRP' : '-'}}</div>
-    <div class="status">{{status}}</div>
+    <div class="bja-xrp-item bja-xrp-balance">{{balance ? balance + ' XRP' : '-'}}</div>
+    <div class="bja-xrp-item bja-xrp-status">{{status}}</div>
   </ng-container>
 </div>

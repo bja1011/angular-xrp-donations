@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ConnectionStatus, SocketData, XrpDonationsService } from './xrp-donations.service';
 import { Subscription } from 'rxjs';
-import * as QR from './qrc';
+import * as QR from './qrc.js';
 import { XrpDonationsConfig } from './xrp-donations.interfaces';
 
 const defaultConfig: XrpDonationsConfig = {
@@ -9,6 +9,7 @@ const defaultConfig: XrpDonationsConfig = {
   showQRCode: true,
   showBalance: true,
   containerClass: 'bja-xrp-donations-container',
+  showConnectionStatus: true,
 };
 
 @Component({

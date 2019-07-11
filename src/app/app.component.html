@@ -10,21 +10,29 @@
 
   <div class="card">
     <div class="card-body">
-      <div class="card-title">Show all info</div>
-      <bja-xrp-donations [config]="noBalanceConfig" account="rDKQPqcVf2tmk7uLyZBxT6kRxRTei5idvG"></bja-xrp-donations>    </div>
+      <div class="card-title">No balance</div>
+      <bja-xrp-donations [config]="noBalanceConfig" account="rDKQPqcVf2tmk7uLyZBxT6kRxRTei5idvG"></bja-xrp-donations>
+    </div>
   </div>
 
   <div class="card">
     <div class="card-body">
-      <div class="card-title">Show all info</div>
+      <div class="card-title">No QR Code</div>
       <bja-xrp-donations [config]="noQRConfig" account="rDKQPqcVf2tmk7uLyZBxT6kRxRTei5idvG"></bja-xrp-donations>
     </div>
   </div>
 
   <div class="card">
     <div class="card-body">
-      <div class="card-title">Show all info</div>
-      <bja-xrp-donations account="rDKQPqcVf2tmk7uLyZBxT6kRxRTei5idvG"></bja-xrp-donations>
+      <div class="card-title">No connection status</div>
+      <bja-xrp-donations [config]="noConnectionStatus" account="rDKQPqcVf2tmk7uLyZBxT6kRxRTei5idvG"></bja-xrp-donations>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Custom class</div>
+      <bja-xrp-donations [config]="customClassConfig" account="rDKQPqcVf2tmk7uLyZBxT6kRxRTei5idvG"></bja-xrp-donations>
     </div>
   </div>
 

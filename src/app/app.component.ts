@@ -15,4 +15,12 @@ export class AppComponent {
   noQRConfig: XrpDonationsConfig = {
     showQRCode: false
   };
+
+  noConnectionStatus: XrpDonationsConfig = {
+    showConnectionStatus: false
+  };
+
+  customClassConfig: XrpDonationsConfig = {
+    containerClass: 'my-custom-class'
+  };
 }
