@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "build-github": "ng build --prod --base-href=https://bja1011.github.io/angular-xrp-donations/ --outputPath=docs",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
