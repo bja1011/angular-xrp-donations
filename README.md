@@ -1,4 +1,4 @@
-# XRP Donations Demo Repository
+# XRP Donations Library Demo Repository
 
 NPM Package: 
 https://www.npmjs.com/package/bja-xrp-donations
